@@ -36,8 +36,16 @@ Useful functions:
   [Y,I] = MIN(X) if you're only doing 1 nearest neighbor, or
   [Y,I] = SORT(X) if you're going to be reasoning about many nearest
   neighbors 
-
 %}
+    N = size(train_image_feats, 1);
+    M = size(test_image_feats, 1);
+    
+    predicted_categories = cell(M, 1);
+    % D is MxN
+    D = vl_alldist2(test_image_feats', train_image_feats');
+    [min_dist,min_dist_idx] = min(D);
+    predicted_categories(1:M) = train_labels(min_dist_idx');
+end
 
 
 
