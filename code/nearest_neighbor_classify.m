@@ -43,8 +43,8 @@ Useful functions:
     predicted_categories = cell(M, 1);
     % D is MxN
     D = vl_alldist2(test_image_feats', train_image_feats');
-    [min_dist,min_dist_idx] = min(D);
-    predicted_categories(1:M) = train_labels(min_dist_idx');
+    [~,min_dist_idx] = min(D);
+	predicted_categories(1:M) = train_labels(min_dist_idx');
 end
 
 
