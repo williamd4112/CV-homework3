@@ -26,6 +26,8 @@ function image_feats = get_tiny_images(image_paths)
     for idx = 1:N
         im = imread(image_paths{idx});
         im = imresize(im, [d_sqrt d_sqrt]);
+        % Zero mean
+        im = im - mean(im(:));
         image_feats(idx,:) = im(:);
     end
 end
