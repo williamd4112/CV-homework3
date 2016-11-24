@@ -52,16 +52,16 @@ Useful functions:
 % Once you have tens of thousands of SIFT features from many training
 % images, cluster them with kmeans. The resulting centroids are now your
 % visual word vocabulary.
-    % sample_limit = 10000;
+    sample_limit = 10000;
     N = length(image_paths);
-    % sample = ceil(sample_limit/N);
-    % D = zeros(128, N * sample);
-    D = [];
+    sample = ceil(sample_limit/N);
+    D = zeros(128, N * sample);
+    %D = [];
     for id=1:N
         im = im2single(imread(image_paths{id}));
         [~, SIFT_features] = vl_dsift(im, 'Fast', 'Step', 10);
-        % D(:,N_each * (id - 1) + 1 :sample * id) = SIFT_features(:,1:sample);
-        D = [D SIFT_features];
+        D(:,N_each * (id - 1) + 1 :sample * id) = SIFT_features(:,1:sample);
+        %D = [D SIFT_features];
     end
 
     [centers, ~] = vl_kmeans(D, vocab_size);
