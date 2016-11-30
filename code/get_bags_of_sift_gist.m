@@ -57,16 +57,24 @@ and using KD-trees.
  http://www.vlfeat.org/matlab/vl_kdtreebuild.html
 
 %}
-    load('vocab.mat');
-
+    load('vocab_gist_sift.mat');
+    param.orientationsPerScale = [8 8 8 8];
+    param.numberBlocks = 4;
+    param.fc_prefilt = 4;
+    
     vocab_size = size(vocab, 1);
     N = size(image_paths, 1);
     image_feats = zeros(N, vocab_size);
 
     for id=1:N
+        if mod(id, 50) == 0
+            display(id)
+        end
         im = im2single(imread(image_paths{id}));
         [~, SIFT_features] = vl_dsift(im,'Step',5);
-        [indices, ~] = knnsearch(vocab, single(SIFT_features)', 'K', 1);
+        [GIST_features, param] = LMgist(im, '', param);
+        features = [SIFT_features' repmat(GIST_features, size(SIFT_features, 2), 1)]';
+        [indices, ~] = knnsearch(vocab, single(features)', 'K', 1);
         image_feats(id,:) = histc(indices, 1:vocab_size)';
     end
 end
