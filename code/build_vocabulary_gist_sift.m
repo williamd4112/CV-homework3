@@ -3,7 +3,7 @@
 %This function will sample SIFT descriptors from the training images,
 %cluster them with kmeans, and then return the cluster centers.
 
-function vocab = build_vocabulary( image_paths, vocab_size )
+function vocab = build_vocabulary_gist_sift( image_paths, vocab_size )
 % The inputs are images, a N x 1 cell array of image paths and the size of 
 % the vocabulary.
 

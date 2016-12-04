@@ -3,7 +3,7 @@
 %This feature representation is described in the handout, lecture
 %materials, and Szeliski chapter 14.
 
-function image_feats = get_bags_of_sifts(image_paths)
+function image_feats = get_bags_of_sift_gist(image_paths)
 % image_paths is an N x 1 cell array of strings where each string is an
 % image path on the file system.
 

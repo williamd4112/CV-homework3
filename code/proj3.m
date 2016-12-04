@@ -16,8 +16,8 @@
 %results are presented.
 
 %FEATURE = 'tiny image';
-FEATURE = 'bag of sift';
-%FEATURE = 'bag of sift gist'
+%FEATURE = 'bag of sift';
+FEATURE = 'bag of sift gist'
 %FEATURE = 'placeholder';
 
 %CLASSIFIER = 'nearest neighbor';
@@ -75,6 +75,7 @@ switch lower(FEATURE)
         
     case 'bag of sift'
         % YOU CODE build_vocabulary.m
+        display('BAG OF SIFT')
         if ~exist('vocab.mat', 'file')
             fprintf('No existing visual word vocabulary found. Computing one from training images\n')
             vocab_size = 400; %Larger values will work better (to a point) but be slower to compute
@@ -86,11 +87,12 @@ switch lower(FEATURE)
         train_image_feats = get_bags_of_sifts(train_image_paths);
         test_image_feats  = get_bags_of_sifts(test_image_paths);
     case 'bag of sift gist'
+        display('BAG OF SIFT GIST')
         if ~exist('vocab_gist_sift.mat', 'file')
             fprintf('No existing visual word vocabulary found. Computing one from training images\n')
             vocab_size = 400; %Larger values will work better (to a point) but be slower to compute
             vocab = build_vocabulary_gist_sift(train_image_paths, vocab_size);
-            save('vocab_gist_sift.mat', 'vocab')
+            save('vocab_gist_sift.mat', 'vocab_gist_sift')
         end
         
         % YOU CODE get_bags_of_sifts.m
