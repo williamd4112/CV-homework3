@@ -56,7 +56,7 @@ Useful functions:
     param.numberBlocks = 4;
     param.fc_prefilt = 4;
     
-    sample_limit = 10000;
+    sample_limit = 1000;
     N = length(image_paths);
     sample = ceil(sample_limit/N);
     D = zeros(128 + 512, N * sample);

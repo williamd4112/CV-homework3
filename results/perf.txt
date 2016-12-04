@@ -1,0 +1,9 @@
++5pts SIFT vs SIFT+GIST
+--
+SIFT : 0.639
+SIFT+GIST : 0.651
+
++3pts Spatial SIFT
+--
+Spatial SIFT = 0.758
+
