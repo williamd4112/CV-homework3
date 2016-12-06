@@ -32,8 +32,12 @@ This project is consist of two parts, feature encoding and classfier. In feature
     3. Extract SIFT features from training, testing set
     4. Calculate fisher vector from SIFT features
 - Classfier
-  - k-NN
+  - k-NN (nearest_neighbor_classify.m)
+    1. use 'knnsearch' to search the nearest vector (with Euclidean distance)
   - 1-vs-all SVM
+    1. Train SVM model on every category with training features
+    2. Calculate confidence value (W * testing features + B)
+    3. Choose max confidence class
   - Kernel SVM
     - Linear
     - Radial basis function
@@ -41,7 +45,10 @@ This project is consist of two parts, feature encoding and classfier. In feature
     - Sigmoid
     
 ### How to run
-- Run
+1. run('VL_ROOT/vl_setup.m')
+2. addpath(libsvm/matlab)
+3. run proj3.m
+4. modify parameters (e.g. FEATURE, CLASSFIER) in proj3.m 
 <center>
 <h1>Project 3 results visualization</h1>
 <img src="confusion_matrix.png">
