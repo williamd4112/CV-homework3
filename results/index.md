@@ -1,3 +1,47 @@
+# Project 3 / Scene recognition with bag of words
+## 102062171 (洪章瑋)
+### Overview
+In this project, I created a scene recognition system and experiemented a lot of techniques such as tiny image, bag of word ... etc.
+This project is consist of two parts, feature encoding and classfier. In feature encoding part, I experiemented tiny image, bag of visual words, bag of words with gaussian pyramid, bag of words combined with gist feature and fisher vector. In feature classifer part, I experimented k-NN and 1-vs-all SVM classfier and linear kernel, radial basis function kernel, polynomial kernel SVM. The best accuracy is 0.779 (with bag of words with gaussian pyramid + linear kernel SVM).
+### Implementation
+- Feature extraction
+  - Tiny image (get_tiny_images.m)
+    1. Resize the image to the same size
+    2. Subtract image mean (zero mean)
+    3. Normalize the image
+  - Bag of word (SIFT) (build_vocabulary.m, get_bags_of_sifts.m)
+    1. Extract same amout of SIFT features from all images in the training set
+    2. Cluster all SIFT features into m class (e.g. 400, 800...) to build a vocabulary
+    3. Extract SIFT features from training, testing set
+    4. Calculate each histogram according to vocabulary which created in Step 2
+  - Bag of word (SIFT + GIST) (build_vocabulary_gist_sift.m, get_bags_of_sift_gist.m)
+    1. Extract same amout of SIFT features from all images in the training set
+    2. Cluster all SIFT features into m class (e.g. 400, 800...) to build a vocabulary
+    3. Extract SIFT features from training, testing set
+    4. Calculate each histogram according to vocabulary which created in Step 2
+    5. Append GIST feature to each image's histogram
+  - Bag of word (SIFT + Gaussian pyramid) (build_vocabulary.m, get_bags_of_spatial_sifts.m)
+    1. Extract same amout of SIFT features from all images in the training set in different scale
+    <img src="spatial.jpg">
+    2. Cluster all SIFT features into m class (e.g. 400, 800...) to build a vocabulary
+    3. Extract SIFT features from training, testing set
+    4. Calculate each histogram according to vocabulary which created in Step 2
+  - Bag of word (Fisher vector) (get_bags_of_sifts_fisher.m)
+    1. Extract same amout of SIFT features from all images in the training set
+    2. Calculate GMM model to get [means, covariance, priors]
+    3. Extract SIFT features from training, testing set
+    4. Calculate fisher vector from SIFT features
+- Classfier
+  - k-NN
+  - 1-vs-all SVM
+  - Kernel SVM
+    - Linear
+    - Radial basis function
+    - Polynomial
+    - Sigmoid
+    
+### How to run
+- Run
 <center>
 <h1>Project 3 results visualization</h1>
 <img src="confusion_matrix.png">
