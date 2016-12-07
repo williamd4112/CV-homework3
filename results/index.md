@@ -58,7 +58,7 @@ This project is consist of two parts, feature encoding and classfier. In feature
 ### Results
 - Tiny image + nearest neighbor
   - Accuracy = 0.222
-  <img src="tiny_nn.PNG"/>
+  <img src="tiny_nn.png"/>
 
 - Bag of word(SIFT) + nearest neighbor (voc size = 400)
   - Accuracy = 0.222
