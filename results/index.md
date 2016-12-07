@@ -21,11 +21,11 @@ This project is consist of two parts, feature encoding and classfier. In feature
     4. Calculate each histogram according to vocabulary which created in Step 2
     5. Append GIST feature to each image's histogram
   - Bag of word (SIFT + Gaussian pyramid) (build_vocabulary.m, get_bags_of_spatial_sifts.m)
-    1. Extract same amout of SIFT features from all images in the training set in different scale
-    <img src="spatial.jpg">
+    1. Extract same amout of SIFT features from all images in the training set
     2. Cluster all SIFT features into m class (e.g. 400, 800...) to build a vocabulary
-    3. Extract SIFT features from training, testing set
-    4. Calculate each histogram according to vocabulary which created in Step 2
+    3. Extract SIFT features from training, testing set in different scale (Level 1 ~ 3)
+    4. Calculate each histogram in grid according to vocabulary which created in Step 2
+        <img src="spatial.jpg"/>
   - Bag of word (Fisher vector) (get_bags_of_sifts_fisher.m)
     1. Extract same amout of SIFT features from all images in the training set
     2. Calculate GMM model to get [means, covariance, priors]
@@ -33,22 +33,44 @@ This project is consist of two parts, feature encoding and classfier. In feature
     4. Calculate fisher vector from SIFT features
 - Classfier
   - k-NN (nearest_neighbor_classify.m)
-    1. use 'knnsearch' to search the nearest vector (with Euclidean distance)
-  - 1-vs-all SVM
+    1. Use 'knnsearch' to search the nearest vector (with Euclidean distance)
+  - 1-vs-all SVM (svm_classify.m)
     1. Train SVM model on every category with training features
     2. Calculate confidence value (W * testing features + B)
     3. Choose max confidence class
-  - Kernel SVM
-    - Linear
-    - Radial basis function
-    - Polynomial
-    - Sigmoid
+  - Kernel SVM (svm_kernel_rbf_classify.m)
+    1. Use libSVM to train different model under different kernel
+      - Linear
+        <img src="form_linear.PNG"/>
+      - Radial basis function
+        <img src="form_rbf.PNG"/>
+      - Polynomial
+        <img src="form_polynomial.PNG"/>
+      - Sigmoid
+        <img src="form_sigmoid.PNG"/>
     
 ### How to run
-1. run('VL_ROOT/vl_setup.m')
-2. addpath(libsvm/matlab)
+1. In matlab enter "run('vlfeat-0.9.20-bin\vlfeat-0.9.20\toolbox\vl_setup.m')"
+2. In matlab enter "addpath(libsvm/matlab)"
 3. run proj3.m
 4. modify parameters (e.g. FEATURE, CLASSFIER) in proj3.m 
+
+### Results
+- Tiny image + nearest neighbor
+- Bag of word(SIFT) + nearest neighbor (voc size = 400)
+- Bag of word(SIFT) + 1-vs-all SVM (voc size = 400)
+- Bag of word(SIFT + GIST) + 1-vs-all SVM (voc size = 400)
+- Bag of word(SIFT and Gaussian pyramid L=3) + 1-vs-all SVM (voc size = 400)
+- Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 400)
+- Bag of word(SIFT and Gaussian pyramid L=3) + RBF SVM (voc size = 400)
+- Bag of word(SIFT and Gaussian pyramid L=3) + Polynomial SVM (voc size = 400)
+- Bag of word(SIFT and Gaussian pyramid L=3) + Sigmoid SVM (voc size = 400)
+- Bag of word(SIFT and Fisher vector and Gaussian pyramid L=3) (voc size = 400)
+- Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 100)
+- Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 200)
+- Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 800)
+- Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 1600)
+- Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 10000)
 <center>
 <h1>Project 3 results visualization</h1>
 <img src="confusion_matrix.png">
