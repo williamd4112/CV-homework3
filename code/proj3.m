@@ -15,11 +15,11 @@
 %code does not crash when run unmodified and you can get a preview of how
 %results are presented.
 
-FEATURE = 'tiny image';
+%FEATURE = 'tiny image';
 %FEATURE = 'bag of sift';
 %FEATURE = 'bag of sift gist'
-%FEATURE = 'bag of spatial sift'
-FEATURE = 'bag of spatial sift fisher'
+FEATURE = 'bag of spatial sift'
+%FEATURE = 'bag of spatial sift fisher'
 %FEATURE = 'placeholder';
 
 %CLASSIFIER = 'nearest neighbor';
