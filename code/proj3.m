@@ -19,10 +19,12 @@
 %FEATURE = 'bag of sift';
 %FEATURE = 'bag of sift gist'
 FEATURE = 'bag of spatial sift'
+%FEATURE = 'bag of spatial sift fisher'
 %FEATURE = 'placeholder';
 
 %CLASSIFIER = 'nearest neighbor';
-CLASSIFIER = 'support vector machine';
+%CLASSIFIER = 'support vector machine';
+CLASSIFIER = 'support vector machine rbf';
 % CLASSIFIER = 'placeholder';
 
 % set up paths to VLFeat functions. 
@@ -93,14 +95,39 @@ switch lower(FEATURE)
         display('BAG OF SPATIAL SIFT')
         if ~exist('vocab.mat', 'file')
             fprintf('No existing visual word vocabulary found. Computing one from training images\n')
-            vocab_size = 400; %Larger values will work better (to a point) but be slower to compute
+            vocab_size = 100; %Larger values will work better (to a point) but be slower to compute
             vocab = build_vocabulary(train_image_paths, vocab_size);
             save('vocab.mat', 'vocab')
         end
         
         % YOU CODE get_bags_of_sifts.m
-        train_image_feats = get_bags_of_spatial_sifts(train_image_paths);
-        test_image_feats  = get_bags_of_spatial_sifts(test_image_paths);
+        if ~exist('train_image_feats', 'var')
+            display('train')
+            train_image_feats = get_bags_of_spatial_sifts(train_image_paths);
+        end
+        if ~exist('test_image_feats', 'var')
+            display('test')
+            test_image_feats  = get_bags_of_spatial_sifts(test_image_paths);
+        end
+      case 'bag of spatial sift fisher'
+        % YOU CODE build_vocabulary.m
+        display('BAG OF SPATIAL SIFT FISHER')
+        vocab_size = 400; %Larger values will work better (to a point) but be slower to compute
+        if ~exist('vocab_sift_fisher.mat', 'file')
+            fprintf('No existing visual word vocabulary found. Computing one from training images\n')
+            vocab_sift_fisher = build_vocabulary_sift_fisher(train_image_paths, vocab_size);
+            save('vocab_sift_fisher.mat', 'vocab_sift_fisher')
+        end
+        
+        % YOU CODE get_bags_of_sifts.m
+        if ~exist('train_image_feats', 'var')
+            display('train')
+            train_image_feats = get_bags_of_spatial_sifts_fisher(train_image_paths, 2 * vocab_size * 128);
+        end
+        if ~exist('test_image_feats', 'var')
+            display('test')
+            test_image_feats  = get_bags_of_spatial_sifts_fisher(test_image_paths, 2 * vocab_size * 128);
+        end
     case 'bag of sift gist'
         display('BAG OF SIFT GIST')
         if ~exist('vocab.mat', 'file')
@@ -111,8 +138,12 @@ switch lower(FEATURE)
         end
         
         % YOU CODE get_bags_of_sifts.m
-        train_image_feats = get_bags_of_sift_gist(train_image_paths);
-        test_image_feats  = get_bags_of_sift_gist(test_image_paths);
+        if ~exist('train_image_feats.mat', 'file')
+            train_image_feats = get_bags_of_sift_gist(train_image_paths);
+        end
+        if ~exist('tesst_image_feats.mat', 'file')
+            test_image_feats  = get_bags_of_sift_gist(test_image_paths);
+        end 
         
     case 'placeholder'
         train_image_feats = [];
@@ -145,6 +176,10 @@ switch lower(CLASSIFIER)
     case 'support vector machine'
         % YOU CODE svm_classify.m 
         predicted_categories = svm_classify(train_image_feats, train_labels, test_image_feats);
+    
+    case 'support vector machine rbf'
+        % YOU CODE svm_classify.m 
+        predicted_categories = svm_kernel_rbf_classify(train_image_feats, train_labels, test_image_feats);
         
     case 'placeholder'
         %The placeholder classifier simply predicts a random category for

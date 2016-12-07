@@ -45,25 +45,25 @@ Useful functions:
 %unique() is used to get the category list from the observed training
 %category list. 'categories' will not be in the same order as in proj3.m,
 %because unique() sorts them. This shouldn't really matter, though.
-categories = unique(train_labels); 
-num_categories = length(categories);
-num_train = size(train_image_feats, 1);
-num_test = size(test_image_feats, 1);
-dim = size(test_image_feats, 2);
-Ws = zeros(num_categories, dim);
-Bs = zeros(num_categories, 1);
-LAMBDA = 0.00002;
-for ii=1:num_categories
-    labels = ones(num_train,1).*-1;
-    labels(strcmp(categories{ii}, train_labels)) = 1;
-    [W, B] = vl_svmtrain(train_image_feats', labels, LAMBDA, 'MaxNumIterations', 1e5);
-    Ws(ii,:) = W';
-    Bs(ii) = B;
-end
+    categories = unique(train_labels); 
+    num_categories = length(categories);
+    num_train = size(train_image_feats, 1);
+    num_test = size(test_image_feats, 1);
+    dim = size(test_image_feats, 2);
+    Ws = zeros(num_categories, dim);
+    Bs = zeros(num_categories, 1);
+    LAMBDA = 0.00002;
+    for ii=1:num_categories
+        labels = ones(num_train,1).*-1;
+        labels(strcmp(categories{ii}, train_labels)) = 1;
+        [W, B] = vl_svmtrain(train_image_feats', labels, LAMBDA, 'MaxNumIterations', 1e5);
+        Ws(ii,:) = W';
+        Bs(ii) = B;
+    end
 
-confidences = Ws*test_image_feats'+repmat(Bs,1,num_test);
-[~, indices] = max(confidences);
-predicted_categories = categories(indices);
+    confidences = Ws*test_image_feats'+repmat(Bs,1,num_test);
+    [~, indices] = max(confidences);
+    predicted_categories = categories(indices);
 
 end
 

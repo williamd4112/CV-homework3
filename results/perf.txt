@@ -1,3 +1,6 @@
+nn-tiny = 0.22
+nn-sift = 0.492
+
 +5pts SIFT vs SIFT+GIST
 --
 SIFT : 0.639
@@ -7,3 +10,15 @@ SIFT+GIST : 0.651
 --
 Spatial SIFT = 0.758
 
++3pts SVM Kernel
+polynomial = 0.489
+linear = 0.779
+rbf = 0.483
+sigmoid = 0.378
+
+voc100_linear =
+voc200_linear = 0.781
+voc400_linear = 0.779
+voc800_linear = 0.793
+voc1600_linear = 0.758
+voc10000_linear = 0.774
