@@ -57,8 +57,15 @@ This project is consist of two parts, feature encoding and classfier. In feature
 
 ### Results
 - Tiny image + nearest neighbor
+  - Accuracy = 0.222
+  <img src="tiny_nn.PNG"/>
+
 - Bag of word(SIFT) + nearest neighbor (voc size = 400)
+  - Accuracy = 0.222
+  <img src="sift_nn.PNG"/>
+  
 - Bag of word(SIFT) + 1-vs-all SVM (voc size = 400)
+  <img src="sift_svm.PNG"/>
 - Bag of word(SIFT + GIST) + 1-vs-all SVM (voc size = 400)
 - Bag of word(SIFT and Gaussian pyramid L=3) + 1-vs-all SVM (voc size = 400)
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 400)
