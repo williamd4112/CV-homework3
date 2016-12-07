@@ -62,33 +62,45 @@ This project is consist of two parts, feature encoding and classfier. In feature
 
 - Bag of word(SIFT) + nearest neighbor (voc size = 400)
   - Accuracy = 0.222
-  <img src="sift_nn.PNG"/>
+  <img src="sift_nn.png"/>
   
 - Bag of word(SIFT) + 1-vs-all SVM (voc size = 400)
+  - Accuracy = 0.639
   <img src="sift_svm.PNG"/>
 - Bag of word(SIFT + GIST) + 1-vs-all SVM (voc size = 400)
+  - Accuracy = 0.651
   <img src="sift_gist_svm.jpg"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + 1-vs-all SVM (voc size = 400)
+  - Accuracy = 0.758
   <img src="sift_spatial_svm.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 400)
+  - Accuracy = 0.779
   <img src="voc_400.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + RBF SVM (voc size = 400)
+  - Accuracy = 0.483
   <img src="sift_spatial_rbf.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Polynomial SVM (voc size = 400)
+  - Accuracy = 0.489
   <img src="sift_spatial_polynomial.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Sigmoid SVM (voc size = 400)
+  - Accuracy = 0.378
   <img src="sift_spatial_svm_sigmoid.png"/>
 - Bag of word(SIFT and Fisher vector and Gaussian pyramid L=3) (voc size = 400)
   <img src="sift_spatial_fisher_svm.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 100)
+  - Accuracy = 0.758
   <img src="voc_100.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 200)
+  - Accuracy = 0.781
   <img src="voc_200.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 800)
+  - Accuracy = 0.793
   <img src="voc_800.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 1600)
+    - Accuracy = 0.758
    <img src="voc_1600.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 3200)
+  - Accuracy = 0.774
    <img src="voc_3200.png"/>
 <center>
 <h1>Project 3 results visualization</h1>
