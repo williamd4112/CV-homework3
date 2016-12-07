@@ -15,11 +15,11 @@
 %code does not crash when run unmodified and you can get a preview of how
 %results are presented.
 
-%FEATURE = 'tiny image';
+FEATURE = 'tiny image';
 %FEATURE = 'bag of sift';
 %FEATURE = 'bag of sift gist'
-FEATURE = 'bag of spatial sift'
-%FEATURE = 'bag of spatial sift fisher'
+%FEATURE = 'bag of spatial sift'
+FEATURE = 'bag of spatial sift fisher'
 %FEATURE = 'placeholder';
 
 %CLASSIFIER = 'nearest neighbor';
@@ -112,7 +112,7 @@ switch lower(FEATURE)
       case 'bag of spatial sift fisher'
         % YOU CODE build_vocabulary.m
         display('BAG OF SPATIAL SIFT FISHER')
-        vocab_size = 400; %Larger values will work better (to a point) but be slower to compute
+        vocab_size = 100; %Larger values will work better (to a point) but be slower to compute
         if ~exist('vocab_sift_fisher.mat', 'file')
             fprintf('No existing visual word vocabulary found. Computing one from training images\n')
             vocab_sift_fisher = build_vocabulary_sift_fisher(train_image_paths, vocab_size);
