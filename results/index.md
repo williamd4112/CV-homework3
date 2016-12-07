@@ -41,13 +41,13 @@ This project is consist of two parts, feature encoding and classfier. In feature
   - Kernel SVM (svm_kernel_rbf_classify.m)
     1. Use libSVM to train different model under different kernel
       - Linear
-        <img src="form_linear.PNG"/>
+        <img src="form_linear_svm.PNG"/>
       - Radial basis function
-        <img src="form_rbf.PNG"/>
+        <img src="form_rbf_svm.PNG"/>
       - Polynomial
-        <img src="form_polynomial.PNG"/>
+        <img src="form_polynomial_svm.PNG"/>
       - Sigmoid
-        <img src="form_sigmoid.PNG"/>
+        <img src="form_sigmoid_svm.PNG"/>
     
 ### How to run
 1. In matlab enter "run('vlfeat-0.9.20-bin\vlfeat-0.9.20\toolbox\vl_setup.m')"
@@ -67,17 +67,29 @@ This project is consist of two parts, feature encoding and classfier. In feature
 - Bag of word(SIFT) + 1-vs-all SVM (voc size = 400)
   <img src="sift_svm.PNG"/>
 - Bag of word(SIFT + GIST) + 1-vs-all SVM (voc size = 400)
+  <img src="sift_gist_svm.jpg"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + 1-vs-all SVM (voc size = 400)
+  <img src="sift_spatial_svm.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 400)
+  <img src="voc_400.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + RBF SVM (voc size = 400)
+  <img src="sift_spatial_rbf.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Polynomial SVM (voc size = 400)
+  <img src="sift_spatial_polynomial.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Sigmoid SVM (voc size = 400)
+  <img src="sift_spatial_svm_sigmoid.png"/>
 - Bag of word(SIFT and Fisher vector and Gaussian pyramid L=3) (voc size = 400)
+  <img src="sift_spatial_fisher_svm.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 100)
+  <img src="voc_100.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 200)
+  <img src="voc_200.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 800)
+  <img src="voc_800.png"/>
 - Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 1600)
-- Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 10000)
+   <img src="voc_1600.png"/>
+- Bag of word(SIFT and Gaussian pyramid L=3) + Linear SVM (voc size = 3200)
+   <img src="voc_3200.png"/>
 <center>
 <h1>Project 3 results visualization</h1>
 <img src="confusion_matrix.png">
